@@ -1,0 +1,23 @@
+{
+    "description": "",
+    "manifest_version": 3,
+    "name": "Spoiler Filter",
+    "version": "1.0",
+    "author": "nlumiere",
+    "permissions": ["declarativeNetRequest", "activeTab"],
+    "host_permissions": [
+        "http://youtube.com/*"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "declarative_net_request": {
+        "rule_resources": [
+          {
+            "id": "my_rules",
+            "enabled": true,
+            "path": "rules.json"
+          }
+        ]
+      }
+  }
