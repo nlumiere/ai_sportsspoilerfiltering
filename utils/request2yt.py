@@ -12,8 +12,8 @@ load_dotenv(dotenv_path)
 KEY = os.environ.get("KEY")
 
 NUM = 25
-QUERY = "mls soccer"
-SIZE = "default"
+QUERY = "world series results"
+SIZE = "medium"
 
 url = 'https://youtube.googleapis.com/youtube/v3/search?maxResults=' + str(NUM) + '&q=' + QUERY + '&key=' + KEY
 
@@ -27,7 +27,7 @@ idsSave = ""
 prevIds = ""
 with open("../data/ids.txt", "r") as idsFile:
     prevIds = idsFile.read()
-print(prevIds)
+# print(prevIds)
 
 for vid in obj["items"]:
     tmp = vid["id"]
@@ -47,10 +47,13 @@ obj = response.json()
 urls = []
 titles = ""
 descriptions = ""
-for i, vid in enumerate(obj["items"]):
-    urls.append(vid["snippet"]["thumbnails"][SIZE]["url"])
-    titles += vid["snippet"]["title"] + "\n===\n"
-    descriptions += vid["snippet"]["description"] + "\n===\n"
+try:
+    for i, vid in enumerate(obj["items"]):
+        urls.append(vid["snippet"]["thumbnails"][SIZE]["url"])
+        titles += vid["snippet"]["title"] + "\n===\n"
+        descriptions += vid["snippet"]["description"] + "\n===\n"
+except:
+    print("failed")
 
 imgs = []
 for url in urls:

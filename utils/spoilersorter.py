@@ -4,6 +4,7 @@ import keyboard
 import cv2
 import numpy as np
 from sys import exit
+from pathlib import Path
 
 def loadImages(path):
     imagesList = listdir(path)
@@ -16,6 +17,9 @@ def loadImages(path):
 PATH = "../data/unsorted/"
 imgs, names = loadImages(PATH)
 
+Path("../data/sorted_raw/non-spoilers/").mkdir(parents=True, exist_ok=True)
+Path("../data/sorted_raw/spoilers/").mkdir(parents=True, exist_ok=True)
+
 for i, img in enumerate(imgs):
     npImg = np.array(img)[:, :, ::-1]
     x = npImg.shape[1] * 2
@@ -25,8 +29,8 @@ for i, img in enumerate(imgs):
     cv2.imshow('graycsale image', cv2img)
     cv2.waitKey(0)
     if (keyboard.is_pressed('y')):
-        rename(PATH + names[i], "../data/spoilers/" + names[i])
+        rename(PATH + names[i], "../data/sorted_raw/spoilers/" + names[i])
     elif (keyboard.is_pressed('n')):
-        rename(PATH + names[i], "../data/non-spoilers/" + names[i])
+        rename(PATH + names[i], "../data/sorted_split/non-spoilers/" + names[i])
     elif (keyboard.is_pressed('q')):
         exit()
