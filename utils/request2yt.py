@@ -12,7 +12,7 @@ load_dotenv(dotenv_path)
 KEY = os.environ.get("KEY")
 
 NUM = 25
-QUERY = "world series results"
+QUERY = "pole vault women champ"
 SIZE = "medium"
 
 url = 'https://youtube.googleapis.com/youtube/v3/search?maxResults=' + str(NUM) + '&q=' + QUERY + '&key=' + KEY

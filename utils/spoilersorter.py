@@ -31,6 +31,6 @@ for i, img in enumerate(imgs):
     if (keyboard.is_pressed('y')):
         rename(PATH + names[i], "../data/sorted_raw/spoilers/" + names[i])
     elif (keyboard.is_pressed('n')):
-        rename(PATH + names[i], "../data/sorted_split/non-spoilers/" + names[i])
+        rename(PATH + names[i], "../data/sorted_raw/non-spoilers/" + names[i])
     elif (keyboard.is_pressed('q')):
         exit()
