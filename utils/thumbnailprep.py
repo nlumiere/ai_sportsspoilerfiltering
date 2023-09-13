@@ -25,7 +25,7 @@ Path("../data/sorted_resized/spoilers/").mkdir(parents=True, exist_ok=True)
 preprocessImages('../data/sorted_raw/non-spoilers/', False)
 preprocessImages('../data/sorted_raw/spoilers/', True)
 
-splitfolders.ratio('../data/sorted_resized', output="../data/sorted_split", seed=1337, ratio=(.8, 0.1,0.1)) 
+splitfolders.ratio('../data/sorted_resized', output="../data/sorted_split", seed=1337, ratio=(.7, 0.15,0.15)) 
 
 # def getImageArrays(path):
 #     imagesList = listdir(path)
