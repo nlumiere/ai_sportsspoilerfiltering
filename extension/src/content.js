@@ -10,24 +10,21 @@ function findTitle(item, query) {
     }
     else {
       titleMap.set(text, true);
-      // console.log("NEW VID:", text);
       chrome.runtime.sendMessage({ title: text }, function (response) {
-        if(response){
-          console.log(response)
+        if(response && response["title"]){
+          const containsSpoilerContent = response["title"]; // get from GPT
+          if (containsSpoilerContent && response["alt_title"] != "") {
+            try {
+              title.textContent = response["alt_title"];
+            }
+            catch {
+              console.log("DOM not fully loaded");
+            }
+          }
         }
         else{
           console.log("no response")
         }
-        // const containsSpoilerContent = response["title"]; // get from GPT
-        // if (containsSpoilerContent && response["alt_title"] != "") {
-        //   try {
-        //     title.textContent = response["alt_title"];
-        //     console.log("Spoiler title:", text, "; New title:", response["alt_title"]);
-        //   }
-        //   catch {
-        //     console.log("DOM not fully loaded");
-        //   }
-        // }
       });
     }
   }

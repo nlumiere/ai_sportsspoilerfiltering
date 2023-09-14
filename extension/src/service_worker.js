@@ -65,11 +65,11 @@ const getAltTitleFromTitle = async (title) => {
 }
 
 chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
-	trySendResponseAsync(message, sender, sendResponse)
+	trySendResponseAsync(message, sendResponse)
 	return true;
 });
 
-async function trySendResponseAsync(message, sender, sendResponse){
+async function trySendResponseAsync(message, sendResponse){
 	const response = {
 		"thumbnail": false,
 		"title": false,
@@ -87,5 +87,5 @@ async function trySendResponseAsync(message, sender, sendResponse){
 		response["alt_title"] = await getAltTitleFromTitle(message["title"]);
 	}
 	console.log(response);
-	sendResponse({ doesContainSpoilers: response });
+	sendResponse(response);
 }
