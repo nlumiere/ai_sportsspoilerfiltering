@@ -20,7 +20,7 @@ const getDoesContainSpoilerContentFromTitle = async (title) => {
 }
 
 const makeGPTRequestFromTitle = async (title) => {
-	const content = "If this is a sports event, tell me in one word if the following title contains spoiler information for the sports event: \"" + title;
+	const content = "Tell me in one word if the following title contains spoiler information for the sports event if and only if this title applies to a sports event that may have been recently played. If it looks like a compilation of events, reply No.: \"" + title;
 	const response = await makeGPTRequest(content);
 	return response;
 }
